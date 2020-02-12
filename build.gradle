@@ -1,0 +1,97 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly group: 'io.dropwizard', name: 'dropwizard-logging', version: "1.3.0"
+
+    implementation('com.github.danielwegener:logback-kafka-appender:0.2.0-RC2') {
+        exclude group: 'org.apache.kafka', module: 'kafka-clients'
+        // is bundled with old version of kafka-clients 1.0.0
+    }
+    runtimeOnly group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.0'
+}
+
+group = 'de.peetzen.dropwizard'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'dropwizard-logging-kafka'
+            from components.java
+            pom {
+                name = 'Kafka Logging Appender for Dropwizard'
+                description = 'A configurable Dropwizard logging appender that writes events to a Kafka topic.'
+                url = 'https://github.com/peetzen/dropwizard-logging-kafka'
+                licenses {
+                    license {
+                        name = "Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0"
+                        distribution = "repo"
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'peetzen'
+                        name = 'Markus Peetzen'
+                        email = 'dev@peetzen.de'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/peetzen/dropwizard-logging-kafka'
+                    connection = 'scm:git:git://github.com/peetzen/dropwizard-logging-kafka.git'
+                    developerConnection = 'scm:git:git://github.com/peetzen/dropwizard-logging-kafka.git'
+                }
+                issueManagement {
+                    system = "GitHub"
+                    url = 'https://github.com/peetzen/dropwizard-logging-kafka/issues'
+                }
+            }
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            credentials {
+                username project.findProperty('sonatypeOssUsername') ?: System.getenv('SONATYPE_OSS_USERNAME')
+                password project.findProperty('sonatypeOssPassword') ?: System.getenv('SONATYPE_OSS_PASSWORD')
+            }
+        }
+    }
+}
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+    sign publishing.publications.mavenJava
+}
+tasks.withType(Sign) {
+    onlyIf { isReleaseVersion }
+}
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
