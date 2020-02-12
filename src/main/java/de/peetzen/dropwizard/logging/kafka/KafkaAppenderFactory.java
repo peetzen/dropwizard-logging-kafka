@@ -35,7 +35,7 @@ public class KafkaAppenderFactory extends AbstractKafkaAppenderFactory<ILoggingE
         appender.setContext(context);
         appender.setDeliveryStrategy(new AsynchronousDeliveryStrategy());
 
-        // exclude logs from org.apache.kafka.client.* to not end in an endless loop forwarding logs written by the
+        // exclude logs from org.apache.kafka.* to not end in an endless loop forwarding logs written by the
         // actual kafka forwarding implementation
         appender.addFilter(new IgnoreApacheKafkaLoggerFilter());
 
