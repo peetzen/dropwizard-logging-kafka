@@ -8,6 +8,7 @@ import com.github.danielwegener.logback.kafka.KafkaAppender;
 import com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -27,7 +28,7 @@ public class KafkaAppenderFactory extends AbstractKafkaAppenderFactory<ILoggingE
     @NotNull
     private String topic;
 
-    private KafkaSecurityConfiguration security;
+    private Map<String, String> producerConfigs;
 
     @Override
     protected KafkaAppender<ILoggingEvent> appender(LoggerContext context) {
@@ -41,28 +42,16 @@ public class KafkaAppenderFactory extends AbstractKafkaAppenderFactory<ILoggingE
 
         appender.addProducerConfigValue("bootstrap.servers", bootstrapServers.stream().collect(Collectors.joining(",")));
         appender.setTopic(topic);
-
-        if (security != null) {
-            configure(appender, "security.protocol", security.getSecurityProtocol());
-            configure(appender, "sasl.mechanism", security.getSaslMechanism());
-            configure(appender, "sasl.jaas.config", security.getSaslJaas());
-
-            configure(appender, "ssl.protocol", security.getSslProtocol());
-            configure(appender, "ssl.enabled.protocols", security.getSslEnabledProtocols());
-            configure(appender, "ssl.endpoint.identification.algorithm", security.getSslEndpointIdentificationAlgorithm());
-
-            configure(appender, "ssl.truststore.location", security.getSslTruststoreLocation());
-            configure(appender, "ssl.truststore.password", security.getSslTruststorePassword());
-            configure(appender, "ssl.keystore.location", security.getSslKeystoreLocation());
-            configure(appender, "ssl.keystore.password", security.getSslKeystorePassword());
+        if (producerConfigs != null) {
+            applyConnectionConfiguration(appender);
         }
         return appender;
     }
 
-    private void configure(KafkaAppender<ILoggingEvent> appender, String key, String value) {
-        if (value != null) {
-            appender.addProducerConfigValue(key, value);
-        }
+    private void applyConnectionConfiguration(KafkaAppender<ILoggingEvent> appender) {
+        producerConfigs.entrySet().stream()
+            .filter(e -> e.getValue() != null)
+            .forEach(e -> appender.addProducerConfigValue(e.getKey(), e.getValue()));
     }
 
     @JsonProperty
@@ -71,12 +60,27 @@ public class KafkaAppenderFactory extends AbstractKafkaAppenderFactory<ILoggingE
     }
 
     @JsonProperty
+    public void setBootstrapServers(List<String> bootstrapServers) {
+        this.bootstrapServers = bootstrapServers;
+    }
+
+    @JsonProperty
     public String getTopic() {
         return topic;
     }
 
     @JsonProperty
-    public KafkaSecurityConfiguration getSecurity() {
-        return security;
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    @JsonProperty
+    public Map<String, String> getProducerConfigs() {
+        return producerConfigs;
+    }
+
+    @JsonProperty
+    public void setProducerConfigs(Map<String, String> producerConfigs) {
+        this.producerConfigs = producerConfigs;
     }
 }
