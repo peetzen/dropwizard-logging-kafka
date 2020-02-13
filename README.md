@@ -1,4 +1,8 @@
 # Kafka Logging Appender for Dropwizard
+[![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-logging-kafka)](https://circleci.com/gh/peetzen/dropwizard-logging-kafka/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.peetzen.dropwizard/dropwizard-logging-kafka/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.peetzen.dropwizard/dropwizard-logging-kafka)
+[![License](https://img.shields.io/github/license/peetzen/dropwizard-logging-kafka)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 Adds support to Dropwizard's logging factory to forward log events to a Kafka topic.
 
 Using the Dropwizard application configuration file it is easy to customize the Kafka topic as well as connection parameters.
@@ -8,7 +12,7 @@ This library makes it easy to forward messages to a Kafka topic through Dropwiza
 
 Using the standard configuration mechanisms of Dropwizard the Kafka topic as well as the connection settings can be configured in addition to the default appender settings. The settings can be specified in the applications configuration file.
 
-Under the hood the latest version of [Apache kafka-clients 2.4](https://www.apache.org/dist/kafka/2.4.0/RELEASE_NOTES.html) is being used to communicate to the Kafka brokers. To provide the logback appender integration the basic [logback-kafka-appender](https://github.com/danielwegener/logback-kafka-appender) library is being utilized.
+Under the hood the latest version of [Apache Kafka Clients 2.4](https://www.apache.org/dist/kafka/2.4.0/RELEASE_NOTES.html) is being used to communicate to the Kafka brokers. To provide the logback appender integration the basic [logback-kafka-appender](https://github.com/danielwegener/logback-kafka-appender) library is being utilized.
 
 ## Getting started
 The artifacts including source and binaries are available on the central Maven repositories.
@@ -24,7 +28,7 @@ For maven:
 
 For gradle:
 ```yaml
-runtimeOnly group: 'de.peetzen.dropwizard', name: '>dropwizard-logging-kafka', version: '1.0.0'
+runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '1.0.0'
 ```
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
