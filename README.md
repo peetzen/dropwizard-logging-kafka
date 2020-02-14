@@ -22,13 +22,13 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard</groupId>
   <artifactId>dropwizard-logging-kafka</artifactId>
-  <version>2.0.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '2.0.0'
+runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '1.0.0'
 ```
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
