@@ -8,6 +8,7 @@ import com.github.danielwegener.logback.kafka.KafkaAppender;
 import io.dropwizard.logging.AbstractAppenderFactory;
 import io.dropwizard.logging.AppenderFactory;
 import io.dropwizard.logging.async.AsyncAppenderFactory;
+import io.dropwizard.logging.filter.FilterFactory;
 import io.dropwizard.logging.filter.LevelFilterFactory;
 import io.dropwizard.logging.layout.LayoutFactory;
 
@@ -29,7 +30,7 @@ public abstract class AbstractKafkaAppenderFactory<E extends DeferredProcessingA
         appender.setEncoder(layoutEncoder);
 
         appender.addFilter(levelFilterFactory.build(threshold));
-        getFilterFactories().forEach(f -> appender.addFilter(f.build()));
+        getFilterFactories().stream().map(FilterFactory::build).forEach(appender::addFilter);
         appender.start();
         return wrapAsync(appender, asyncAppenderFactory);
     }
