@@ -22,18 +22,20 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard</groupId>
   <artifactId>dropwizard-logging-kafka</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '1.0.0'
+runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '2.0.0'
 ```
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
 
-Fully compatible with Dropwizard version `v1.x` as well as `v2.x`.
+Due to breaking changes introduced with Dropwizard `v2.0.0` two versions of this library are provided:
+* for `Dropwizard v1.x` use `1.0.0`
+* for `Dropwizard v2.x` use `2.0.0`
 
 ## Configuration Example
 Specifying a logger appender with type `kafka` is all that is necessary. It can be added in addition to existing loggers and customized using the default settings, including the layout, filters end encoders.
