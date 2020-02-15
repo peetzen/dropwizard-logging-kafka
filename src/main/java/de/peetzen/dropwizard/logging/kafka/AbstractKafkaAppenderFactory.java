@@ -15,7 +15,7 @@ import io.dropwizard.logging.layout.LayoutFactory;
 /**
  * A base implementation of {@link AppenderFactory} producing an appender based on {@link KafkaAppender}.
  * <p>
- * Based on {@link io.dropwizard.logging.AbstractOutputStreamAppenderFactory}
+ * Based on io.dropwizard.logging.AbstractOutputStreamAppenderFactory introduced in Dropwizard v1.3.0
  */
 public abstract class AbstractKafkaAppenderFactory<E extends DeferredProcessingAware> extends AbstractAppenderFactory<E> {
 
