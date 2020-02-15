@@ -34,8 +34,9 @@ runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', ve
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
 
 Due to breaking changes introduced with Dropwizard `v2.0.0` two versions of this library are provided:
-* for `Dropwizard v1.x` use `1.0.0`
 * for `Dropwizard v2.x` use `2.0.0`
+* for `Dropwizard v1.1.x < v2.x` use `1.0.0`
+* for `Dropwizard version < v1.1.x` use `1.0.0` with more recent version of `logback` libraries
 
 ## Configuration Example
 Specifying a logger appender with type `kafka` is all that is necessary. It can be added in addition to existing loggers and customized using the default settings, including the layout, filters end encoders.
