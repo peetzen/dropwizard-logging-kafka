@@ -1,7 +1,11 @@
 # Kafka Logging Appender for Dropwizard
-[![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-logging-kafka)](https://circleci.com/gh/peetzen/dropwizard-logging-kafka/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.peetzen.dropwizard/dropwizard-logging-kafka/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.peetzen.dropwizard/dropwizard-logging-kafka)
+[![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-logging-kafka)](https://circleci.com/gh/peetzen/dropwizard-logging-kafka)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-logging-kafka/2)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-logging-kafka)
 [![License](https://img.shields.io/github/license/peetzen/dropwizard-logging-kafka)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v1.x-green)](https://github.com/dropwizard/dropwizard)
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v1.3.x-green)](https://github.com/dropwizard/dropwizard)
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v2.x-green)](https://github.com/dropwizard/dropwizard)
 
 Adds support to Dropwizard's logging factory to forward log events to a Kafka topic.
 
@@ -33,10 +37,14 @@ runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', ve
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
 
-Due to breaking changes introduced with Dropwizard `v2.0.0` two versions of this library are provided:
-* for `Dropwizard v2.x` use `2.0.0`
-* for `Dropwizard v1.1.x < v2.x` use `1.0.0`
-* for `Dropwizard version < v1.1.x` use `1.0.0` with more recent version of `logback` libraries
+Due to breaking changes introduced with Dropwizard `v2.0.0` and `v1.3.0` different versions of this library are provided:
+
+Dropwizard Version | Library Version | Comment
+--- | --- | ---
+`v2.x` | `2.0.0` | For latest Dropwizard version.
+`v1.3.x` | `1.3.0` | 
+`v1.2.x` + `v1.1.x`| `1.0.0` | 
+`< 1.1.0` | `1.0.0` | More recent version of `logback` libraries required.
 
 ## Configuration Example
 Specifying a logger appender with type `kafka` is all that is necessary. It can be added in addition to existing loggers and customized using the default settings, including the layout, filters end encoders.
