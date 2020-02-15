@@ -28,6 +28,10 @@ public class KafkaAppenderFactory extends AbstractKafkaAppenderFactory<ILoggingE
     @NotNull
     private String topic;
 
+    /**
+     * Configuration for the Kafka Producer. Detailed information can be found in the official Kafka documentation
+     * http://kafka.apache.org/documentation.html#producerconfigs.
+     */
     private Map<String, String> producerConfigs;
 
     @Override
