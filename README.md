@@ -6,6 +6,8 @@
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v1.x-green)](https://github.com/dropwizard/dropwizard)
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v1.3.x-green)](https://github.com/dropwizard/dropwizard)
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v2.x-green)](https://github.com/dropwizard/dropwizard)
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v3.x-green)](https://github.com/dropwizard/dropwizard)
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v4.x-green)](https://github.com/dropwizard/dropwizard)
 
 Adds support to Dropwizard's logging factory to forward log events to a Kafka topic.
 
@@ -41,6 +43,7 @@ Due to breaking changes between Dropwizard versions different versions of this l
 
 | Dropwizard Version  | Library Version | Comment                                              |
 |---------------------|-----------------|------------------------------------------------------|
+| `v4.x`              | `4.0.0`         | For latest Dropwizard version.                       |
 | `v3.x`              | `3.0.0`         |                                                      |
 | `v2.x`              | `2.0.0`         |                                                      |
 | `v1.3.x`            | `1.3.0`         |                                                      |
