@@ -16,7 +16,7 @@ java {
 }
 
 dependencies {
-    implementation group: 'io.dropwizard', name: 'dropwizard-logging', version: "3.0.0"
+    implementation group: 'io.dropwizard', name: 'dropwizard-logging', version: "4.0.0"
 
     implementation('com.github.danielwegener:logback-kafka-appender:0.2.0-RC2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'

@@ -1,6 +1,6 @@
 # Kafka Logging Appender for Dropwizard
 [![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-logging-kafka)](https://circleci.com/gh/peetzen/dropwizard-logging-kafka)
-[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-logging-kafka/2)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-logging-kafka)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-logging-kafka/)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-logging-kafka)
 [![License](https://img.shields.io/github/license/peetzen/dropwizard-logging-kafka)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v1.x-green)](https://github.com/dropwizard/dropwizard)
@@ -28,13 +28,13 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard</groupId>
   <artifactId>dropwizard-logging-kafka</artifactId>
-  <version>3.0.0</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '3.0.0'
+runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '4.0.0'
 ```
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
