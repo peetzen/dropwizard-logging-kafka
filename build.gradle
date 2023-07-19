@@ -9,8 +9,14 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 dependencies {
-    implementation group: 'io.dropwizard', name: 'dropwizard-logging', version: "2.0.0"
+    implementation group: 'io.dropwizard', name: 'dropwizard-logging', version: "3.0.0"
 
     implementation('com.github.danielwegener:logback-kafka-appender:0.2.0-RC2') {
         exclude group: 'org.apache.kafka', module: 'kafka-clients'
@@ -19,7 +25,7 @@ dependencies {
     runtimeOnly group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.0'
 
     // Spock for testing
-    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-M1-groovy-2.5'
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.3-groovy-4.0'
 }
 
 group = 'de.peetzen.dropwizard'

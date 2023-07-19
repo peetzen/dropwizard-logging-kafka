@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
- * An {@link io.dropwizard.logging.AppenderFactory} implementation which provides an appender that writes events to a
+ * An {@link io.dropwizard.logging.common.AppenderFactory} implementation which provides an appender that writes events to a
  * Kafka topic.
  */
 @JsonTypeName("kafka")

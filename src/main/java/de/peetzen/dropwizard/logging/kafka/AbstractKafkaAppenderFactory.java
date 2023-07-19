@@ -5,17 +5,17 @@ import ch.qos.logback.core.Appender;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
 import ch.qos.logback.core.spi.DeferredProcessingAware;
 import com.github.danielwegener.logback.kafka.KafkaAppender;
-import io.dropwizard.logging.AbstractAppenderFactory;
-import io.dropwizard.logging.AppenderFactory;
-import io.dropwizard.logging.async.AsyncAppenderFactory;
-import io.dropwizard.logging.filter.FilterFactory;
-import io.dropwizard.logging.filter.LevelFilterFactory;
-import io.dropwizard.logging.layout.LayoutFactory;
+import io.dropwizard.logging.common.AbstractAppenderFactory;
+import io.dropwizard.logging.common.AppenderFactory;
+import io.dropwizard.logging.common.async.AsyncAppenderFactory;
+import io.dropwizard.logging.common.filter.FilterFactory;
+import io.dropwizard.logging.common.filter.LevelFilterFactory;
+import io.dropwizard.logging.common.layout.LayoutFactory;
 
 /**
  * A base implementation of {@link AppenderFactory} producing an appender based on {@link KafkaAppender}.
  * <p>
- * Based on {@link io.dropwizard.logging.AbstractOutputStreamAppenderFactory}
+ * Based on {@link io.dropwizard.logging.common.AbstractOutputStreamAppenderFactory}
  */
 public abstract class AbstractKafkaAppenderFactory<E extends DeferredProcessingAware> extends AbstractAppenderFactory<E> {
 

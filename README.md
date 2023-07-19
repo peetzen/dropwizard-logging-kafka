@@ -26,25 +26,26 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard</groupId>
   <artifactId>dropwizard-logging-kafka</artifactId>
-  <version>2.0.0</version>
+  <version>3.0.0</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '2.0.0'
+runtimeOnly group: 'de.peetzen.dropwizard', name: 'dropwizard-logging-kafka', version: '3.0.0'
 ```
 
 There is no need to have a compile time dependency. The library and the `kafka` appender functionality are auto discovered at runtime.
 
-Due to breaking changes introduced with Dropwizard `v2.0.0` and `v1.3.0` different versions of this library are provided:
+Due to breaking changes between Dropwizard versions different versions of this library are provided:
 
-Dropwizard Version | Library Version | Comment
---- | --- | ---
-`v2.x` | `2.0.0` | For latest Dropwizard version.
-`v1.3.x` | `1.3.0` | 
-`v1.2.x` + `v1.1.x`| `1.0.0` | 
-`< 1.1.0` | `1.0.0` | More recent version of `logback` libraries required.
+| Dropwizard Version  | Library Version | Comment                                              |
+|---------------------|-----------------|------------------------------------------------------|
+| `v3.x`              | `3.0.0`         |                                                      |
+| `v2.x`              | `2.0.0`         |                                                      |
+| `v1.3.x`            | `1.3.0`         |                                                      |
+| `v1.2.x` + `v1.1.x` | `1.0.0`         |                                                      |
+| `< 1.1.0`           | `1.0.0`         | More recent version of `logback` libraries required. |
 
 ## Configuration Example
 Specifying a logger appender with type `kafka` is all that is necessary. It can be added in addition to existing loggers and customized using the default settings, including the layout, filters end encoders.
@@ -77,11 +78,11 @@ logging:
 
 The default [Dropwizard logging configuration](https://www.dropwizard.io/en/stable/manual/configuration.html#logging) works and in addition the following new options are available:
 
-Name | Description
------------- | -------------
-topic | The Kafka topic to use for the forwarded log events.
-bootstrapServers | At least one Kafka server endpoint to connect to.
-producerConfigs | Optional `key: value` pairs for configuring the _Kafka Producer_. Detailed information can be found in the official [Kafka documentation](http://kafka.apache.org/documentation.html#producerconfigs).
+| Name             | Description                                                                                                                                                                                            |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| topic            | The Kafka topic to use for the forwarded log events.                                                                                                                                                   |
+| bootstrapServers | At least one Kafka server endpoint to connect to.                                                                                                                                                      |
+| producerConfigs  | Optional `key: value` pairs for configuring the _Kafka Producer_. Detailed information can be found in the official [Kafka documentation](http://kafka.apache.org/documentation.html#producerconfigs). |
 
 ## Extension Support
 The supported functionality is not enough, you want a more customized Kafka producer?
