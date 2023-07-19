@@ -1,6 +1,6 @@
 # Kafka Logging Appender for Dropwizard
 [![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-logging-kafka)](https://circleci.com/gh/peetzen/dropwizard-logging-kafka)
-[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-logging-kafka/)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-logging-kafka)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-logging-kafka)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-logging-kafka)
 [![License](https://img.shields.io/github/license/peetzen/dropwizard-logging-kafka)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v1.x-green)](https://github.com/dropwizard/dropwizard)
